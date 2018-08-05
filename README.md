@@ -1,6 +1,6 @@
 # FastCampus Project
 
-*2018-07-28 ~*
+*2018-07-28 ~ 2018-09*
 
 ## firstweb
 
