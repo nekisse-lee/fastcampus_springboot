@@ -1,11 +1,17 @@
 package com.nekisse.myweb.dto;
 
 
+import lombok.*;
 
-public class User {
+@Getter
+@Setter
+@NoArgsConstructor
+public class UserDto {
     String name;
     String password;
     String mail;
+
+
 
 
 }

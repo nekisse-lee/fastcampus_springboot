@@ -27,7 +27,7 @@ public class MemberApiController {
 
     // /member3?name=kim&id=5           //파라미터는 모두 문자열로 구성되어 있다.
     @GetMapping("/member3")
-    Member member3(@RequestParam(name = "name", required = true) String name,
+    public Member member3(@RequestParam(name = "name", required = true) String name,
                   @RequestParam(name = "id", required = false, defaultValue = "1") Long id) {
         Member member = new Member(id, name, "");
         return member;
@@ -36,7 +36,7 @@ public class MemberApiController {
     // /member3?name=kim&id=5           //파라미터는 모두 문자열로 구성되어 있다.
     //@ModelAttribute를  사용하면 파라미터 이름과 같은 프로퍼티 값이 설정된다.
     @GetMapping("/member4")
-    Member member4(@ModelAttribute Member member) {
+    public Member member4(@ModelAttribute Member member) {
         return member;
     }
 
@@ -47,8 +47,7 @@ public class MemberApiController {
 
 
     @PostMapping("/member6")
-
-    Member member6(@RequestParam(name = "name", required = true) String name,
+    public Member member6(@RequestParam(name = "name", required = true) String name,
                    @RequestParam(name = "id", required = false, defaultValue = "1") Long id) {
         Member member = new Member(id, name, "");
         return member;

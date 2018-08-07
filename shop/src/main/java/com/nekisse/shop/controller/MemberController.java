@@ -22,9 +22,7 @@ public class MemberController {
         list.add(new Member(1L, "kim", "kim@"));
         list.add(new Member(2L, "lee", "lee@"));
         list.add(new Member(3L, "kang", "kang@"));
-
         modelMap.addAttribute("list", list);
-
         return "list2"; // view 리턴
     }
 
