@@ -1,6 +1,7 @@
 package com.nekisse.myweb.domain.board;
 
 
+import com.nekisse.myweb.Util.TimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,7 +14,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Board {
+public class Board  extends TimeEntity {
     public static Board newInstance() {
         return new Board();
     }
@@ -32,6 +33,7 @@ public class Board {
     private String location;
     private String img;
     private String description;
+
     private LocalDate reportingDate;
 
 

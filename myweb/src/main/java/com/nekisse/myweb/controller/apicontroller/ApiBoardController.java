@@ -5,15 +5,17 @@ import com.nekisse.myweb.service.BoardService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+/*@RestController
 @RequestMapping("/api/boardlist")
-@AllArgsConstructor
+@AllArgsConstructor*/
 public class ApiBoardController {
     private BoardService boardService;
 
+/*
     @PostMapping("/add")
     public void createBoard(@ModelAttribute BoardDto boardDto) {
         boardService.createBoard(boardDto);
     }
+*/
 
 }
