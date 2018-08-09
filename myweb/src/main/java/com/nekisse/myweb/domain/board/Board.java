@@ -14,7 +14,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Board  extends TimeEntity {
+public class Board {
     public static Board newInstance() {
         return new Board();
     }
@@ -22,10 +22,9 @@ public class Board  extends TimeEntity {
 //    private  List<Board> boardList = new ArrayList<>();
 
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "board_seq")
+    @Column(name = "board_seq" )
     private long seq;
 
 

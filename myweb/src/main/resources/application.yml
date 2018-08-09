@@ -9,3 +9,5 @@ spring:
       enabled: true
   jpa:
     show-sql: true
+  mustache:
+    suffix: .html
