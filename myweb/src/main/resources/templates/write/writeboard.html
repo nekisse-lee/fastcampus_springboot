@@ -28,7 +28,9 @@
 <body>
 
 <!-- Navigation -->
-<div th:include="include/navigation.html"></div>
+<div>{{>./include/navigation}}</div>
+
+<!--<div th:include="include/navigation.html"></div>-->
 
 <!-- Page Header -->
 <header class="masthead" style="background-image: url('img/contact-bg.jpg')">
@@ -92,7 +94,8 @@
 <hr>
 
 <!-- Footer -->
-<div th:include="/include/footer.html"></div>
+<div>{{>./include/footer}}</div>
+<!--<div th:include="/include/footer.html"></div>-->
 
 
 <!-- Bootstrap core JavaScript -->

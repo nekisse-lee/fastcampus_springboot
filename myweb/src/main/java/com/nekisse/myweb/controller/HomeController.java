@@ -36,10 +36,12 @@ public class HomeController {
     }
 
 
+/*
     @GetMapping("/post")
     public String post() {
         return "post";
     }
+*/
 
     @GetMapping("/login")
     public String login() {
@@ -49,7 +51,8 @@ public class HomeController {
     @PostMapping("/login")
     public String login(String userId, String password, HttpSession session) {
         String x = userService.getUser(userId, password, session);
-        if (x != null) return x;
+        if (x != null) {return x;}
+
         return "redirect:/";
     }
 
