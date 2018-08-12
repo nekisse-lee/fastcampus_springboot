@@ -17,7 +17,6 @@ import javax.servlet.http.HttpSession;
 @AllArgsConstructor
 public class HomeController {
     private UserService userService;
-    private UserRepository userRepository;
 
     @GetMapping("/" )
     public String home(String name, Model model) {

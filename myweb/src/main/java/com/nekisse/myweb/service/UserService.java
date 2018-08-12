@@ -5,11 +5,13 @@ import com.nekisse.myweb.domain.user.UserRepository;
 import com.nekisse.myweb.dto.UserDto;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpSession;
 import java.util.Optional;
 
 @Service
+@Transactional
 @AllArgsConstructor
 public class UserService {
 
@@ -35,5 +37,8 @@ public class UserService {
         session.setAttribute("user",user);
         return null;
     }
+
+
+
 
 }
