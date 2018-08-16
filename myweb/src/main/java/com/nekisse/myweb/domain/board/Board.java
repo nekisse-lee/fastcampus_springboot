@@ -13,6 +13,7 @@ import java.time.LocalDate;
 @Entity
 @Getter
 @Setter
+@Table(name = "board")
 @NoArgsConstructor
 public class Board {
     public static Board newInstance() {
