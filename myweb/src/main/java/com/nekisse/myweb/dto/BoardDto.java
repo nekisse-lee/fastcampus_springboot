@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 
 
@@ -15,15 +16,18 @@ import java.time.LocalDate;
 public class BoardDto {
 
 
-    @JsonProperty
+    @NotEmpty
     private String title;
-    @JsonProperty
+
+    @NotEmpty
     private String description;
-    @JsonProperty
+
+    @NotEmpty
     private String location;
-    @JsonProperty
+
+
     private String img;
-    @JsonProperty
+
     private LocalDate reportingDate;
 
     @Builder

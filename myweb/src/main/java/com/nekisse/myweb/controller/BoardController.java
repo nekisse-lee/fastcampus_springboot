@@ -8,10 +8,13 @@ import com.nekisse.myweb.service.BoardService;
 import com.nekisse.myweb.service.UserService;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -33,7 +36,18 @@ public class BoardController {
 
 
     @PostMapping("/add")
-    public String createBoard(@ModelAttribute BoardDto boardDto) {
+    public String createBoard(@Valid @ModelAttribute BoardDto boardDto, BindingResult createError) {
+        //custom validation
+        /*
+        if (createError.hasErrors()) {
+            return ResponseEntity.badRequest().build();
+        }*/
+
+        /*return ResponseEntity.ok("redirect:/boardlist");*/
+
+        if (createError.hasErrors()) {
+            return "redirect:/";
+        }
         boardService.createBoard(boardDto);
         return "redirect:/boardlist";
     }
