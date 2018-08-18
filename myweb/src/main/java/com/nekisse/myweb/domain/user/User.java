@@ -1,6 +1,7 @@
 package com.nekisse.myweb.domain.user;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.nekisse.myweb.domain.board.Board;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,7 +28,11 @@ public class User {
     @JsonProperty
     private String email;
 
-@Builder
+
+    @OneToMany
+    private Board board;
+
+    @Builder
     public User(String userId, String password, String email) {
         this.userId = userId;
         this.password = password;

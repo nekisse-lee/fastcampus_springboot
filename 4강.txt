@@ -1,0 +1,83 @@
+examples.boot
+jpaexam
+jpa devtools h2 lombok
+
+
+-JAVA Application이 종료될 때 특별한 기능이 수행되고 싶을 경우?
+ 1)  java 문법으로 제공
+2. spring에서도 무언가 제공하지 않을까?
+3. Bean이 생성되려면 생성자가 호출되야 한다. 생성자가 호출된 이후에 해당 빈의 특정 메소드를 자동을 쇨행하도록 하려면 어떠게 해야 할까?  @PostConstruct, @PreDestroy  
+4. 모든 Bean이 생성되고 나서 어떤 동작을 하도록 하려면 어떻게 해야할까?  3,4번을 이해할려면 라이프사이클을 공부해야한다.   
+-jpa, h2(jdbc driver) 모듈을 추가하여 프로젝트 생성   자동으로 in-memory DataSource 가만들어 진다. EntityManager가 bean으로 등록된다
+. PlatformTransactionManager이 bean으로 등록된다. 
+    schmea.sql을 실행해서 database 테이블을 자동으로 생성한다. 
+
+   data.sql  (insert문)을 실행해서 sample data를 자동으로 추가한다.   
+
+   https://www.baeldung.com/spring-boot-data-sql-and-sechma-sql shutdown hook
+
+jdbc(java.sql) -> SQL Mapper( SQL 중심)
+				iBatis - > myBatis
+				Spring JDBC
+
+			-> ORM
+				Hibernate(구현) -> JPA(표준)  —> Data Jpa(spring)
+				EntityManager (영속성관리자.)
+				트랜잭션단위마다 영속성 컨텍스트가 생성 삭제
+				트랜잭션이 끝날 때 지연쓰기(sql을 압축실행)
+
+Data JPA를 사용하면 JpaRepository 인터페이스를 상속받은 interface를 만든다.
+해당 인터페이스를 구현하고 있는 객체를 자동으로 bean으로 등로된다.
+
+JPA에서는 SQL을 사용하지 않고 JPQL을 사용한다.
+이유는 SQL은 특정 DB에 종속인데, JPQL은 그렇지 않다.
+Hibernate의 경우, 사용하는 DB에 맞는 Dialect를 설정한다.
+ JPQL은 보통 @Query (“SELECT b FROM Board b WHERE id = :id”)
+이런식으로 쓴다. : id부분은 바인딩하여 사용된다.
+문제는 DyNamic JPQL의 경우이다.
+예를 들어 WHERE id = :id and name = :name 또는
+WHERE id = :id and title = :title 과 같이 where절 조건이 아예
+경우에 따라 바뀌는 경우가 있다.
+
+JpaRepository를 상속받는 BoardRepository를 만든다.
+Dynamic JPQL기능이 필요한 메소드를 가지는 BoardRepositoryCustom 인터페이스를 만든다.
+BoardRepositoryCustom을 구현하고 있는 BoardRepositoryImpl 클래스를 작성.
+		-BoardRepositoryImpl에 EntityManager을 주입하여 동적 JPQL을 사용
+		-QuerydslRepositorySupport를 상속받는 BoardRepositoryImpl  을 만든다. 		 QueryDSL을 이용한다. maven이나 gradle에 plugin을 설정해야 한다. BoardRepository 는   BoardRepositoryCustom  인터페이스를 상속받는다.
+
+
+- Entity를 정의 할 수 있어야 한다.
+- Entity와 Entity간의 관계를 설정할 수 있어야 한다.
+- Entity와 Entity의 관계를 보고 자동 생성되는 Table에 유추할 수 있어야 한다.
+(스타트엄???)
+- Table 을 보고 관련된  Entity클래스들을 작성할 수 있어야 한다.
+
+DB 프로그래밍에서 가장 성능을 떨어지게 만드는 원인은 잘못된 Select문의 실행이다.
+
+Board --- BoardFile
+     1   *
+
+목록을 출력하고 싶다.            ****  1+N 문제가 발생.  ****
+1) SELECT b FROM Board b
+2) b.getBoardFiles()      // lazy 로딩.  SELECT bf FROM boardFile bf
+                                        WHERE bf.fileId = :fileId
+   해당 리스트에서 하나씩 꺼내서 name을 출력
+Board.itle, BoardFile.name 을 출력하고 싶다.
+
+이 문제를 해결하려면 JPQL에서는 feach join 을 사용한다.
+이때 엔티티가 중복되서 가지고 올 수 있다.  JPQL에 destict 를 사용하거나
+혹은 Set자료 구조를 사용한다.  Set 으로 선언하지 않으면 문제가 해결 안되는 경우도 있다.
+
+Board(table)   BoardFile(table)
+1                   1 1(fk)
+2                   1 1(fk)
+3                   3 2(fk)
+4                   4 2(fk)
+                    5 3(fk)
+
+
+숙제
+자동으로 테이블이 생설될 때 문자열의 길이를 설정하는 방법.
+mysql의 경우 대용량 문자열은 text 타입을 사용하는데. 타입을 선언하는 방법.
+본인이 다른 db 를 사용한다면, 그 db에 맞는 방법을 조사 정리.
+
