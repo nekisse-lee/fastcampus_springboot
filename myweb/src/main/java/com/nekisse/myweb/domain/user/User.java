@@ -30,7 +30,7 @@ public class User {
 
 
 //    @OneToMany
-    private Board board;
+//    private Board board;
 
     @Builder
     public User(String userId, String password, String email) {

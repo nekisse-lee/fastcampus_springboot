@@ -10,3 +10,4 @@ public class MyWebApplication {
         SpringApplication.run(MyWebApplication.class, args);
     }
 }
+
