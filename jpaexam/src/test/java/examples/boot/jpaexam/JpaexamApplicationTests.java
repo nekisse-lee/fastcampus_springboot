@@ -10,8 +10,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class
 JpaexamApplicationTests {
 
+/*
     @Test
     public void contextLoads() {
     }
+*/
 
 }
