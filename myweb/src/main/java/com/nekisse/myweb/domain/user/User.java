@@ -29,7 +29,7 @@ public class User {
     private String email;
 
 
-    @OneToMany
+//    @OneToMany
     private Board board;
 
     @Builder

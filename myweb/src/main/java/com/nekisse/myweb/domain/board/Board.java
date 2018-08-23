@@ -37,7 +37,7 @@ public class Board {
 
     private LocalDate reportingDate;
 
-    @ManyToOne
+//    @ManyToOne
     private User user;
 
     @Builder
