@@ -2,6 +2,7 @@ package com.nekisse.myweb.domain.board;
 
 
 import com.nekisse.myweb.Util.TimeEntity;
+import com.nekisse.myweb.domain.user.User;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,7 +26,7 @@ public class Board {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "board_seq" )
+    @Column(name = "board_seq")
     private long seq;
 
 
@@ -36,6 +37,8 @@ public class Board {
 
     private LocalDate reportingDate;
 
+    @ManyToOne
+    private User user;
 
     @Builder
     public Board(String title, String description, String location, String img, LocalDate reportingDate) {
