@@ -1,7 +1,8 @@
 package com.nekisse.myweb.domain.board;
 
 
-import com.nekisse.myweb.Util.TimeEntity;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.nekisse.myweb.domain.user.User;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,6 +10,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+
+import static javax.persistence.FetchType.LAZY;
 
 @Entity
 @Getter
@@ -34,7 +37,13 @@ public class Board {
     private String img;
     private String description;
 
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
     private LocalDate reportingDate;
+
+    @ManyToOne(fetch = LAZY)
+    @JoinColumn(name = "user_seq")
+    private User user;
+
 
 
     @Builder

@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
@@ -21,16 +22,31 @@ public class User {
     @Column(name = "user_seq")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long seq;
+
     @JsonProperty
+    @Column(unique = true)
     private String userId;
+
     @JsonProperty
     private String password;
+
+
     @JsonProperty
+    @Column(unique = true)
     private String email;
 
 
-//    @OneToMany
-//    private Board board;
+    @OneToMany(mappedBy = "user")
+    private List<Board> boardList;
+
+/*
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "user_board",
+            joinColumns = @JoinColumn(name = "user_seq"),
+            inverseJoinColumns = @JoinColumn(name = "board_seq")
+    )
+    private List<Board> userBoards = new ArrayList<>();
+*/
 
     @Builder
     public User(String userId, String password, String email) {

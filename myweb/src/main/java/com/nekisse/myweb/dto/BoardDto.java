@@ -1,6 +1,5 @@
 package com.nekisse.myweb.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,8 +24,10 @@ public class BoardDto {
     @NotEmpty
     private String location;
 
-
+    @NotEmpty
     private String img;
+
+
 
     private LocalDate reportingDate;
 

@@ -13,13 +13,10 @@ import java.time.LocalDateTime;
 @Getter
 @EntityListeners(AuditingEntityListener.class)
 @MappedSuperclass
-public class TimeEntity {
+public abstract class TimeEntity {
 
     @CreatedDate
     private LocalDateTime repotingDate;
-
-
-
 
 
 }

@@ -18,6 +18,7 @@ public class Member {
     private String name;
     private String email;
     private String password;
+
     @Column(name = "join_date")
     private LocalDateTime joinDate;
 
