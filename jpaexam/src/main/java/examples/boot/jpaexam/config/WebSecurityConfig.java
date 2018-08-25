@@ -23,34 +23,32 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .logout()
-                    .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                    .logoutSuccessUrl("/boards")
-                    .permitAll()
-                .and()
-                    .authorizeRequests()
-                    .antMatchers("/").permitAll()
-                    .antMatchers("/boards/writeform").hasRole("USER")
-                    .antMatchers(HttpMethod.POST,"/boards").hasRole("USER")
-                    .antMatchers("/boards/**").permitAll()
-                    .antMatchers("/members/joingform").permitAll()
-                    .antMatchers(HttpMethod.POST,"/members").permitAll()
-                    .antMatchers("/members/welcome").permitAll()
-                    .antMatchers("/members/**").hasRole("USER")
-                    .antMatchers("/api/**").hasRole("USER")
-                    .antMatchers("/admin/**").hasRole("ADMIN")
-                    .antMatchers("/h2-console/**").permitAll()
-                    .anyRequest().fullyAuthenticated()
-                .and().csrf()  //개발시에만 필요 csrf()    h2-console과 연관이있다.(로그인못함)
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/boards")
+                .permitAll()
+                .and().authorizeRequests()
+                .antMatchers("/").permitAll()
+                .antMatchers("/boards/writeform").hasRole("USER")
+                .antMatchers(HttpMethod.POST,"/boards").hasRole("USER")
+                .antMatchers("/boards/**").permitAll()
+                .antMatchers("/members/joinform").permitAll()
+                .antMatchers(HttpMethod.POST,"/members").permitAll()
+                .antMatchers("/members/welcome").permitAll()
+                .antMatchers("/members/login").permitAll()
+                .antMatchers("/members/**").hasRole("USER")
+                .antMatchers("/api/**").hasRole("USER")
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/h2-console/**").permitAll()
+                .anyRequest().fullyAuthenticated()
+                .and().csrf() // //개발시에만 필요 csrf()    h2-console과 연관이있다.(로그인못함)
                 .ignoringAntMatchers("/**")
-                .and().
-                headers().frameOptions().disable() ///개발시에만 필요 csrf()    h2-console과 연관이있다.
+                .and()  // h2콘솔에서 필요
+                .headers().frameOptions().disable()
                 .and().formLogin()
-                .loginProcessingUrl("/users/login")
-                .loginPage("/users/login").
-                usernameParameter("email").
-                passwordParameter("password");
-
-
+                .loginPage("/members/login")
+                .usernameParameter("email")
+                .passwordParameter("password")
+                .loginProcessingUrl("/members/login"); // post방식으로 전달.
     }
 
 }
