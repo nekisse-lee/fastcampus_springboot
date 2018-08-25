@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpSession;
-import java.util.Optional;
 
 @Service
 @Transactional
@@ -34,9 +33,11 @@ public class UserService {
         if (!password.equals(user.getPassword())) {
             return "redirect:login";
         }
-        session.setAttribute("user",user);
+        session.setAttribute("user", user);
         return null;
     }
+
+
 
 
 

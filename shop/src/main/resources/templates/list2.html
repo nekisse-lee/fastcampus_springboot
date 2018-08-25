@@ -24,10 +24,10 @@
 
 <div th:text="${name}"></div>
 
-<div th:each="member : ${list}">
-    <div th:text="${member.id}"></div>
-    <div th:text="${member.name}"></div>
-    <div th:text="${member.email}"></div>
+<div th:each="user : ${list}">
+    <div th:text="${user.id}"></div>
+    <div th:text="${user.name}"></div>
+    <div th:text="${user.email}"></div>
 </div>
 
 <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->

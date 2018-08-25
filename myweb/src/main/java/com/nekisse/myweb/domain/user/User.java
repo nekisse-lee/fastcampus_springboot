@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -36,17 +37,15 @@ public class User {
     private String email;
 
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Board> boardList;
 
-/*
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "user_board",
             joinColumns = @JoinColumn(name = "user_seq"),
             inverseJoinColumns = @JoinColumn(name = "board_seq")
     )
     private List<Board> userBoards = new ArrayList<>();
-*/
 
     @Builder
     public User(String userId, String password, String email) {

@@ -1,8 +1,6 @@
 package com.nekisse.myweb.controller;
 
 
-import com.nekisse.myweb.domain.user.User;
-import com.nekisse.myweb.domain.user.UserRepository;
 import com.nekisse.myweb.dto.UserDto;
 import com.nekisse.myweb.service.UserService;
 import lombok.AllArgsConstructor;
@@ -11,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("")
@@ -62,8 +61,10 @@ public class HomeController {
         return "join";
     }
 
+
+    //@Valid ..
     @PostMapping("/adduser" )
-    public String join(@ModelAttribute UserDto userDto) {
+    public String join(@ModelAttribute @Valid UserDto userDto) {
         userService.addUser(userDto);
         return "redirect:/";
     }

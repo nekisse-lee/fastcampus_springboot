@@ -4,6 +4,8 @@ package com.nekisse.myweb.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
+import javax.validation.constraints.Email;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -13,7 +15,9 @@ public class UserDto {
     String userId;
     @JsonProperty
     String password;
+
     @JsonProperty
+    @Email
     String email;
 
 

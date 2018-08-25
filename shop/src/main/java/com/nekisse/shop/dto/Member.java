@@ -9,7 +9,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@JacksonXmlRootElement(localName = "member")
+@JacksonXmlRootElement(localName = "user")
 public class Member {
     private Long id;
     private String name;

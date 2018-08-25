@@ -5,9 +5,11 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@Table(name = "member")
+@Table(name = "user")
 @Getter
 @Setter
 public class Member {
@@ -21,6 +23,19 @@ public class Member {
 
     @Column(name = "join_date")
     private LocalDateTime joinDate;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinTable(name="member_member_role",
+            joinColumns = @JoinColumn(name = "member_id",
+                    referencedColumnName = "id" ),
+            inverseJoinColumns = @JoinColumn(name = "member_role_id",
+                    referencedColumnName = "id"
+            )
+    )
+    public Set<MemberRole> memberRoles = new HashSet<>();
+
+
+
 
 
 }
