@@ -3,9 +3,9 @@ insert into member_role (id, name)
 insert into member_role (id, name)
   values(2, 'ROLE_ADMIN');
 
-insert into user (id, name, email, password, join_date)
+insert into member (id, name, email, password, join_date)
   values( 1, 'kim', 'urstory@gmail.com', '{bcrypt}$2a$10$cX.JjamaeuzvMF67H5u/1uUcCKf4WoRgfGZky8LOvTzbBeutdhYYe', now());
-insert into user (id, name, email, password, join_date)
+insert into member (id, name, email, password, join_date)
   values( 2, 'kang', 'carami@gmail.com', '{bcrypt}$2a$10$YhOvPvm1wpBNgfyuiREKLeHqVlqDZxrBE0wEXAVjQ2I0/l4/mlxF.', now());
 
 insert into member_member_role(member_id, member_role_id)

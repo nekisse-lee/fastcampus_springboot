@@ -2,7 +2,7 @@ package com.nekisse.myweb.domain.board;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.nekisse.myweb.domain.user.User;
+import com.nekisse.myweb.domain.user.Member;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -41,8 +41,8 @@ public class Board {
     private LocalDate reportingDate;
 
     @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "user_seq")
-    private User user;
+    @JoinColumn(name = "member_seq")
+    private Member member;
 
 
 

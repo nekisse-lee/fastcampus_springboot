@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
-public class UserRole {
+public class MemberRole {
 
 
     @Id
@@ -19,7 +19,6 @@ public class UserRole {
     private Long rno;
 
 
-    @Enumerated(EnumType.STRING)
-    private String roleType;
+    private String roleName;
 
 }

@@ -21,7 +21,7 @@
       },
       function() {
         var currentTop = $(window).scrollTop();
-        //check if user is scrolling up
+        //check if member is scrolling up
         if (currentTop < this.previousTop) {
           //if scrolling up...
           if (currentTop > 0 && $('#mainNav').hasClass('is-fixed')) {

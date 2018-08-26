@@ -1,7 +1,7 @@
 package com.nekisse.myweb.controller;
 
 
-import com.nekisse.myweb.dto.UserDto;
+import com.nekisse.myweb.dto.MemberDto;
 import com.nekisse.myweb.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -64,8 +64,8 @@ public class HomeController {
 
     //@Valid ..
     @PostMapping("/adduser" )
-    public String join(@ModelAttribute @Valid UserDto userDto) {
-        userService.addUser(userDto);
+    public String join(@ModelAttribute @Valid MemberDto memberDto) {
+        userService.addUser(memberDto);
         return "redirect:/";
     }
 

@@ -1,14 +1,10 @@
 package com.nekisse.myweb.controller;
 
 import com.nekisse.myweb.domain.board.Board;
-import com.nekisse.myweb.domain.board.BoardRepository;
 import com.nekisse.myweb.dto.BoardDto;
-import com.nekisse.myweb.dto.UserDto;
 import com.nekisse.myweb.service.BoardService;
 import com.nekisse.myweb.service.UserService;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;

@@ -14,19 +14,19 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-@Table(name = "user")
+@Table(name = "member")
 @NoArgsConstructor
-public class User {
+public class Member {
 
 
     @Id
-    @Column(name = "user_seq")
+    @Column(name = "member_seq")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long seq;
 
     @JsonProperty
     @Column(unique = true)
-    private String userId;
+    private String memberId;
 
     @JsonProperty
     private String password;
@@ -37,7 +37,7 @@ public class User {
     private String email;
 
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Board> boardList;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -48,8 +48,8 @@ public class User {
     private List<Board> userBoards = new ArrayList<>();
 
     @Builder
-    public User(String userId, String password, String email) {
-        this.userId = userId;
+    public Member(String memberId, String password, String email) {
+        this.memberId = memberId;
         this.password = password;
         this.email = email;
     }

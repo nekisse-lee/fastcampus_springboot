@@ -9,10 +9,10 @@ import javax.validation.constraints.Email;
 @Getter
 @Setter
 @NoArgsConstructor
-public class UserDto {
+public class MemberDto {
 
     @JsonProperty
-    String userId;
+    String memberId;
     @JsonProperty
     String password;
 
@@ -22,8 +22,8 @@ public class UserDto {
 
 
     @Builder
-    public UserDto(String userId, String password, String email) {
-        this.userId = userId;
+    public MemberDto(String memberId, String password, String email) {
+        this.memberId = memberId;
         this.password = password;
         this.email = email;
     }
