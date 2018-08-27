@@ -1,4 +1,4 @@
-package com.nekisse.myweb.domain.role;
+package com.nekisse.myweb.domain.memberrole;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

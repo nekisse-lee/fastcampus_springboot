@@ -41,7 +41,7 @@ public class MemberServiceImpl implements MemberService {
         member.setJoinDate(LocalDateTime.now());
 
         // MemberRole에 대한 설정도 해야 한다. MemberRoleRepository를 만든다.
-        //role name이 "ROLE_USER"인 것을 읽어와서 Member의  memberRoles에 설정
+        //memberrole name이 "ROLE_USER"인 것을 읽어와서 Member의  memberRoles에 설정
         Set<MemberRole> memberRoles = new HashSet<>();
         memberRoles.add(roleRepository.findByName("ROLE_USER"));
         member.setMemberRoles(memberRoles);

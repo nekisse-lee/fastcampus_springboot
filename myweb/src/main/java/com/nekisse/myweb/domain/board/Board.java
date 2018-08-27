@@ -2,6 +2,7 @@ package com.nekisse.myweb.domain.board;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.nekisse.myweb.domain.boardcatecory.BoardCategory;
 import com.nekisse.myweb.domain.user.Member;
 import lombok.Builder;
 import lombok.Getter;
@@ -43,6 +44,14 @@ public class Board {
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "member_seq")
     private Member member;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_seq")
+    private BoardCategory boardCategory;
+
+    /*//어떤 파일을 가지고 있느냐
+    @OneToMany(mappedBy = "board" ,cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<BoardFile> boardFiles;*/
 
 
 

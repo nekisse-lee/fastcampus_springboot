@@ -1,6 +1,13 @@
+INSERT INTO MEMBER_ROLE (ROLE_SEQ, ROLE_NAME) values (1 , 'ROLE_USER');
+INSERT INTO MEMBER_ROLE (ROLE_SEQ, ROLE_NAME) values (2 , 'ROLE_ADMIN');
+
 INSERT INTO MEMBER (MEMBER_SEQ , MEMBER_ID, PASSWORD, EMAIL) VALUES (1, 'aa', 'aa', 'a@a.com')
 INSERT INTO MEMBER (MEMBER_SEQ , MEMBER_ID, PASSWORD, EMAIL) VALUES (2, 'bb', 'bb', 'b@b.com')
 INSERT INTO MEMBER (MEMBER_SEQ , MEMBER_ID, PASSWORD, EMAIL) VALUES (3, 'cc', 'cc', 'c@c.com')
+
+insert into member_member_role(MEMBER_SEQ, ROLE_SEQ) values (1, 1);
+insert into member_member_role(MEMBER_SEQ, ROLE_SEQ) values (1, 2);
+insert into member_member_role(MEMBER_SEQ, ROLE_SEQ) values (2, 1);
 
 
 INSERT INTO BOARD (BOARD_SEQ , TITLE, LOCATION, IMG , DESCRIPTION, REPORTING_DATE, MEMBER_SEQ) VALUES (1, '가게1', '서울', 'img' , '설명1', CURRENT_TIMESTAMP, 1)

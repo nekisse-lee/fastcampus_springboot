@@ -2,6 +2,7 @@ package com.nekisse.myweb.domain.user;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.nekisse.myweb.domain.board.Board;
+import com.nekisse.myweb.domain.memberrole.MemberRole;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +10,9 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -46,6 +49,13 @@ public class Member {
             inverseJoinColumns = @JoinColumn(name = "board_seq")
     )
     private List<Board> userBoards = new ArrayList<>();
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinTable(name = "member_member_role",
+            joinColumns = @JoinColumn(name = "member_seq"),
+            inverseJoinColumns = @JoinColumn(name = "role_seq")
+    )
+    public Set<MemberRole> memberRoles = new HashSet<>();
 
     @Builder
     public Member(String memberId, String password, String email) {

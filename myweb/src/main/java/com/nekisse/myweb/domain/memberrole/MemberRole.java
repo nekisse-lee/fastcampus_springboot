@@ -1,4 +1,4 @@
-package com.nekisse.myweb.domain.role;
+package com.nekisse.myweb.domain.memberrole;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

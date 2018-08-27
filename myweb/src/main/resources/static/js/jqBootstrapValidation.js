@@ -366,10 +366,10 @@
           );
 
           $helpBlock.data(
-            "original-role",
+            "original-memberrole",
             (
-              $helpBlock.data("original-role") ?
-              $helpBlock.data("original-role") :
+              $helpBlock.data("original-memberrole") ?
+              $helpBlock.data("original-memberrole") :
               $helpBlock.attr("role")
             )
           );
@@ -482,7 +482,7 @@
                     (settings.options.prependExistingHelpBlock ? $helpBlock.data("original-contents") : ""));
                 } else {
                   // Multiple? Being sloppy? Glue them together into an UL.
-                  $helpBlock.html("<ul role=\"alert\"><li>" + errorsFound.join("</li><li>") + "</li></ul>" +
+                  $helpBlock.html("<ul memberrole=\"alert\"><li>" + errorsFound.join("</li><li>") + "</li></ul>" +
                     (settings.options.prependExistingHelpBlock ? $helpBlock.data("original-contents") : ""));
                 }
               } else {
@@ -521,8 +521,8 @@
             $controlGroup.attr("class", $controlGroup.data("original-classes"));
             // reset aria
             $this.attr("aria-invalid", $this.data("original-aria-invalid"));
-            // reset role
-            $helpBlock.attr("role", $this.data("original-role"));
+            // reset memberrole
+            $helpBlock.attr("role", $this.data("original-memberrole"));
             // remove all elements we created
             if (createdElements.indexOf($helpBlock[0]) > -1) {
               $helpBlock.remove();
