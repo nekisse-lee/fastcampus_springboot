@@ -34,13 +34,12 @@ public class MemberService {
         memberDto.setPassword(passwordEncoder.encode(memberDto.getPassword()));
 
 
-
-
         Member member = Member.builder()
                 .memberId(memberDto.getMemberId())
                 .password(memberDto.getPassword())
                 .email(memberDto.getEmail())
                 .build();
+
         Set<MemberRole> memberRoles = new HashSet<>();
         memberRoles.add(memberRoleRepository.findByRoleName("ROLE_USER"));
         member.setMemberRoles(memberRoles);

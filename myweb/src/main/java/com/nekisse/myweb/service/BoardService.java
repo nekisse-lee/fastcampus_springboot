@@ -23,7 +23,6 @@ public class BoardService {
                 .description(boardDto.getDescription())
                 .location(boardDto.getLocation())
                 .img(boardDto.getImg())
-                .reportingDate(LocalDate.now())
                 .build();
 
         boardRepository.save(board);

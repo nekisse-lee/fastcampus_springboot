@@ -41,6 +41,9 @@ public class Board {
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
     private LocalDate reportingDate;
 
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
+    private LocalDate updateDate;
+
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "member_seq")
     private Member member;
@@ -53,10 +56,15 @@ public class Board {
     @OneToMany(mappedBy = "board" ,cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<BoardFile> boardFiles;*/
 
+    @Column(name = "read_count")
+    private Long readCount;
+
+    @Column(name = "like_count")
+    private Long likeCount;
 
 
     @Builder
-    public Board(String title, String description, String location, String img, LocalDate reportingDate) {
+    public Board(String title, String description, String location, String img) {
         this.title = title;
         this.description = description;
         this.location = location;

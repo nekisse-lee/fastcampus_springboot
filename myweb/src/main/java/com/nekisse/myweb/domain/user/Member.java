@@ -64,7 +64,7 @@ public class Member {
     public Set<MemberRole> memberRoles = new HashSet<>();
 
     @Builder
-    public Member(String memberId, String password, String email, LocalDateTime localDateTime ) {
+    public Member(String memberId, String password, String email ) {
         this.memberId = memberId;
         this.password = password;
         this.email = email;

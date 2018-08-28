@@ -22,6 +22,7 @@ insert into board_category(id, name)
 insert into board_category(id, name)
   values(2, 'free');
 
+
 insert into board(id, member_id, board_category_id, title, content, read_count, create_date, update_date)
 values(1, 1, 2, 'hello 111', 'hello 111111', 2, now(), now());
 

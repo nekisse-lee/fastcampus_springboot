@@ -11,12 +11,10 @@ import javax.validation.constraints.Email;
 @NoArgsConstructor
 public class MemberDto {
 
-    @JsonProperty
     String memberId;
-    @JsonProperty
+
     String password;
 
-    @JsonProperty
     @Email
     String email;
 
