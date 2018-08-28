@@ -7,8 +7,11 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -39,6 +42,9 @@ public class Member {
     @Column(unique = true)
     private String email;
 
+    @Column(name = "join_date")
+    private LocalDateTime localDateTime;
+
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Board> boardList;
@@ -58,9 +64,10 @@ public class Member {
     public Set<MemberRole> memberRoles = new HashSet<>();
 
     @Builder
-    public Member(String memberId, String password, String email) {
+    public Member(String memberId, String password, String email, LocalDateTime localDateTime ) {
         this.memberId = memberId;
         this.password = password;
         this.email = email;
+        this.localDateTime = LocalDateTime.now();
     }
 }

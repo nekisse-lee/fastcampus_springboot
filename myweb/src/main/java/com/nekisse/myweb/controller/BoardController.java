@@ -3,7 +3,7 @@ package com.nekisse.myweb.controller;
 import com.nekisse.myweb.domain.board.Board;
 import com.nekisse.myweb.dto.BoardDto;
 import com.nekisse.myweb.service.BoardService;
-import com.nekisse.myweb.service.UserService;
+import com.nekisse.myweb.service.MemberService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -20,7 +20,7 @@ public class BoardController {
 
     private BoardService boardService;
 
-    private UserService userService;
+    private MemberService memberService;
 
     @GetMapping("")
     public String boardList(ModelMap modelMap) {

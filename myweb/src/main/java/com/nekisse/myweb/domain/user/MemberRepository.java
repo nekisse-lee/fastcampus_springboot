@@ -6,4 +6,5 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
     Member findByMemberId(String userId);
 
 
+    Member findByEmail(String email);
 }

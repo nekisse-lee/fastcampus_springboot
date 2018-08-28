@@ -2,7 +2,7 @@ package com.nekisse.myweb.controller;
 
 
 import com.nekisse.myweb.dto.MemberDto;
-import com.nekisse.myweb.service.UserService;
+import com.nekisse.myweb.service.MemberService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +15,7 @@ import javax.validation.Valid;
 @RequestMapping("")
 @AllArgsConstructor
 public class HomeController {
-    private UserService userService;
+    private MemberService memberService;
 
     @GetMapping("/" )
     public String home(String name, Model model) {
@@ -48,7 +48,7 @@ public class HomeController {
 
     @PostMapping("/login")
     public String login(String userId, String password, HttpSession session) {
-        String x = userService.getUser(userId, password, session);
+        String x = memberService.getMember(userId, password, session);
         if (x != null) {return x;}
 
         return "redirect:/";
@@ -65,7 +65,7 @@ public class HomeController {
     //@Valid ..
     @PostMapping("/adduser" )
     public String join(@ModelAttribute @Valid MemberDto memberDto) {
-        userService.addUser(memberDto);
+        memberService.addMember(memberDto);
         return "redirect:/";
     }
 
