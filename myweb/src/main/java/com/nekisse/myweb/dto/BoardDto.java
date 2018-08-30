@@ -1,5 +1,6 @@
 package com.nekisse.myweb.dto;
 
+import com.nekisse.myweb.domain.boardcatecory.BoardCategory;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,8 +29,11 @@ public class BoardDto {
     private String img;
 
 
-
     private LocalDate reportingDate;
+
+    private LocalDate updateDate;
+
+    private BoardCategory boardCategory;
 
     @Builder
     public BoardDto(String title, String description, String location, String img, LocalDate reportingDate) {

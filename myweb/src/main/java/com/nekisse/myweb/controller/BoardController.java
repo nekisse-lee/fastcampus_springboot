@@ -14,7 +14,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-@RequestMapping("/boardlist")
+@RequestMapping("/board")
 @AllArgsConstructor
 public class BoardController {
 
@@ -39,13 +39,14 @@ public class BoardController {
             return ResponseEntity.badRequest().build();
         }*/
 
+
         /*return ResponseEntity.ok("redirect:/boardlist");*/
 
         if (createError.hasErrors()) {
             return "redirect:/";
         }
         boardService.createBoard(boardDto);
-        return "redirect:/boardlist";
+        return "redirect:/board";
     }
 
     @GetMapping("/writeboard")
@@ -53,10 +54,7 @@ public class BoardController {
         return "/write/writeboard";
     }
 
-    @GetMapping("/test")
-    public String writeBoard2() {
-        return "test";
-    }
+
 
 
 

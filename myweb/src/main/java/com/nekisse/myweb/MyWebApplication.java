@@ -1,15 +1,10 @@
 package com.nekisse.myweb;
 
-import com.samskivert.mustache.Mustache;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.mustache.MustacheEnvironmentCollector;
-import org.springframework.context.annotation.Bean;
-import org.springframework.core.env.Environment;
-import org.springframework.stereotype.Component;
 
 @SpringBootApplication
-@Component
+//@ComponentScan(value = {"com.nekisse.myweb.**"})
 public class MyWebApplication {
 
     public static void main(String[] args) {
@@ -17,10 +12,10 @@ public class MyWebApplication {
     }
 
 
-    //com.samskivert.mustache.MustacheException$Context: No method or field with name 'variable' 에러에 대한 처리..
+    //com.samskivert.mustache.MustacheException$Context: No method or field with name 'variable'.... 에러에 대한 처리..
 
     //Override MustacheAutoConfiguration to support defaultValue("")
-    @Bean
+    /*@Bean
     public Mustache.Compiler mustacheCompiler(Mustache.TemplateLoader mustacheTemplateLoader,
                                               Environment environment) {
 
@@ -33,6 +28,6 @@ public class MyWebApplication {
                 .withCollector(collector);
         return compiler;
 
-    }
+    }*/
 }
 

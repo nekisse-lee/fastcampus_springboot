@@ -3,11 +3,12 @@ package com.nekisse.myweb.domain.board;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.nekisse.myweb.domain.boardcatecory.BoardCategory;
-import com.nekisse.myweb.domain.user.Member;
+import com.nekisse.myweb.domain.member.Member;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -64,11 +65,16 @@ public class Board {
 
 
     @Builder
-    public Board(String title, String description, String location, String img) {
+    public Board(String title, String location, String img, String description,  Member member,@Nullable BoardCategory boardCategory, @Nullable Long readCount, @Nullable Long likeCount) {
         this.title = title;
-        this.description = description;
         this.location = location;
         this.img = img;
+        this.description = description;
         this.reportingDate = LocalDate.now();
+        this.updateDate = LocalDate.now();
+        this.member = member;
+        this.boardCategory = boardCategory;
+        this.readCount = readCount;
+        this.likeCount = likeCount;
     }
 }

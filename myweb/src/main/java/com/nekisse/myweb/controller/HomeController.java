@@ -28,6 +28,11 @@ public class HomeController {
         return "hotissue";
     }
 
+    @PostMapping("/hotissue/add")
+    public String addhotissue() {
+        return "";
+    }
+
     @GetMapping("/about")
     public String about() {
         return "about";
@@ -46,6 +51,7 @@ public class HomeController {
         return "login";
     }
 
+/*
     @PostMapping("/login")
     public String login(String userId, String password, HttpSession session) {
         String x = memberService.getMember(userId, password, session);
@@ -53,6 +59,7 @@ public class HomeController {
 
         return "redirect:/";
     }
+*/
 
 
 

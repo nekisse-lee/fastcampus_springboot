@@ -1,0 +1,2 @@
+<div><#include "include/navigation.html"></div>
+    <div><#include "include/footer.html"></div>

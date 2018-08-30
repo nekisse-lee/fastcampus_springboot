@@ -2,8 +2,8 @@ package com.nekisse.myweb.service;
 
 import com.nekisse.myweb.domain.memberrole.MemberRole;
 import com.nekisse.myweb.domain.memberrole.MemberRoleRepository;
-import com.nekisse.myweb.domain.user.Member;
-import com.nekisse.myweb.domain.user.MemberRepository;
+import com.nekisse.myweb.domain.member.Member;
+import com.nekisse.myweb.domain.member.MemberRepository;
 import com.nekisse.myweb.dto.MemberDto;
 import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
@@ -39,11 +39,14 @@ public class MemberService {
                 .password(memberDto.getPassword())
                 .email(memberDto.getEmail())
                 .build();
+        // MemberRole에 대한 설정도 해야한다. MemberRoleRepository 를 만든다.
+        // role name이 "ROLE_USER"인 것을 읽어와서 Member 의 memberRoles 에 설정
 
         Set<MemberRole> memberRoles = new HashSet<>();
         memberRoles.add(memberRoleRepository.findByRoleName("ROLE_USER"));
         member.setMemberRoles(memberRoles);
-        return memberRepository.save(member);
+        member = memberRepository.save(member);
+        return member;
 
     }
 
@@ -60,8 +63,8 @@ public class MemberService {
     }
 
 
-    public Member getMemberByEmail(String email) {
-        return memberRepository.findByEmail(email);
+    public Member getMemberByMemberId(String memberId) {
+        return memberRepository.findByMemberId(memberId);
     }
 
 

@@ -1,4 +1,4 @@
-package com.nekisse.myweb.domain.user;
+package com.nekisse.myweb.domain.member;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

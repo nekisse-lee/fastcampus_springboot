@@ -1,16 +1,40 @@
 spring:
-  devtools:
-    livereload:
-      enabled: true
-  freemarker:
-    cache: false
+  jpa:
+    hibernate:
+     ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
   h2:
     console:
       enabled: true
-  jpa:
-    show-sql: true
+
+  devtools:
+    livereload:
+      enabled: true
+#  freemarker:
+#    cache: false
+#    suffix: .ftl
+
   mustache:
-    suffix: .html
+     allow-request-override: false
+     allow-session-override: true
+     cache: false
+     charset: UTF-8
+     check-template-location: true
+     content-type: text/html
+     enabled: true
+     expose-request-attributes: true
+     expose-session-attributes: true
+     expose-spring-macro-helpers: true
+     spring.mustache.prefix=classpath: /templates/
+     request-context-attribute:
+     suffix: .html
+     spring.mustache.view-names:
+
+
+
 #  datasource:
 #    url: jdbc:mysql://localhost:3306/myweb
 #    username: root

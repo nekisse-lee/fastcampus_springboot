@@ -1,4 +1,4 @@
-package com.nekisse.myweb.domain.user;
+package com.nekisse.myweb.domain.member;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.nekisse.myweb.domain.board.Board;
@@ -7,8 +7,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -63,6 +61,17 @@ public class Member {
     )
     public Set<MemberRole> memberRoles = new HashSet<>();
 
+
+    public boolean isSameUser(String memberId) {
+        return this.memberId.equals(memberId);
+    }
+
+
+
+
+
+
+
     @Builder
     public Member(String memberId, String password, String email ) {
         this.memberId = memberId;
@@ -70,4 +79,8 @@ public class Member {
         this.email = email;
         this.localDateTime = LocalDateTime.now();
     }
+
+
+
+
 }
