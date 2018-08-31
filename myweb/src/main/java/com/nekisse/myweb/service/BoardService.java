@@ -4,10 +4,12 @@ import com.nekisse.myweb.domain.board.Board;
 import com.nekisse.myweb.domain.board.BoardRepository;
 import com.nekisse.myweb.dto.BoardDto;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -32,4 +34,10 @@ public class BoardService {
     public List<Board> getBoardList() {
             return boardRepository.findAll();
         }
+
+
+    public Page<Board> getBoards(int page) {
+        Pageable pageable = PageRequest.of(page - 1, 4);
+        return boardRepository.getBoards(pageable);
+    }
 }
