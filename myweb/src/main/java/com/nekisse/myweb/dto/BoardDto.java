@@ -29,18 +29,13 @@ public class BoardDto {
     private String img;
 
 
-    private LocalDate reportingDate;
-
-    private LocalDate updateDate;
-
     private BoardCategory boardCategory;
 
     @Builder
-    public BoardDto(String title, String description, String location, String img, LocalDate reportingDate) {
+    public BoardDto(String title, String description, String location, String img) {
         this.title = title;
         this.description = description;
         this.location = location;
         this.img = img;
-        this.reportingDate = reportingDate;
     }
 }

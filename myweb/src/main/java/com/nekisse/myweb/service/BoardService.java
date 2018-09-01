@@ -1,5 +1,6 @@
 package com.nekisse.myweb.service;
 
+import com.nekisse.myweb.Util.UserContextHolder;
 import com.nekisse.myweb.domain.board.Board;
 import com.nekisse.myweb.domain.board.BoardRepository;
 import com.nekisse.myweb.dto.BoardDto;
@@ -28,6 +29,18 @@ public class BoardService {
                 .build();
 
         boardRepository.save(board);
+    }
+
+    public void createBoard2(BoardDto boardDto) {
+        Board board = Board.newInstance();
+        board.create(
+                boardDto.getTitle(),
+                boardDto.getLocation(),
+                boardDto.getDescription(),
+                boardDto.getImg(),
+                UserContextHolder.get()
+        );
+
     }
 
 

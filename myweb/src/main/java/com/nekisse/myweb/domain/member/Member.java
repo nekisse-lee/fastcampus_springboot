@@ -1,6 +1,7 @@
 package com.nekisse.myweb.domain.member;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.nekisse.myweb.Util.TimeEntity;
 import com.nekisse.myweb.domain.board.Board;
 import com.nekisse.myweb.domain.memberrole.MemberRole;
 import lombok.Builder;
@@ -20,7 +21,7 @@ import java.util.Set;
 @Setter
 @Table(name = "member")
 @NoArgsConstructor
-public class Member {
+public class Member extends TimeEntity {
 
 
     @Id
@@ -48,8 +49,8 @@ public class Member {
     private List<Board> boardList;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "user_board",
-            joinColumns = @JoinColumn(name = "user_seq"),
+    @JoinTable(name = "member_board",
+            joinColumns = @JoinColumn(name = "member_seq"),
             inverseJoinColumns = @JoinColumn(name = "board_seq")
     )
     private List<Board> userBoards = new ArrayList<>();

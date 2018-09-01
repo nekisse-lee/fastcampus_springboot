@@ -4,7 +4,7 @@ import com.nekisse.myweb.domain.member.Member;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.context.SecurityContextHolder;
 
-public class UserContaxtHoler {
+public class UserContextHolder {
     public static Member get() {
         return (Member) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     }

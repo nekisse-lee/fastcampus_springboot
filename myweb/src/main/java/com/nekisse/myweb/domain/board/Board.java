@@ -2,6 +2,7 @@ package com.nekisse.myweb.domain.board;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.nekisse.myweb.Util.TimeEntity;
 import com.nekisse.myweb.domain.boardcatecory.BoardCategory;
 import com.nekisse.myweb.domain.member.Member;
 import lombok.Builder;
@@ -20,7 +21,7 @@ import static javax.persistence.FetchType.LAZY;
 @Setter
 @Table(name = "board")
 @NoArgsConstructor
-public class Board {
+public class Board extends TimeEntity {
     public static Board newInstance() {
         return new Board();
     }
@@ -39,15 +40,14 @@ public class Board {
     private String img;
     private String description;
 
-    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
-    private LocalDate reportingDate;
 
-    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "Asia/Seoul")
-    private LocalDate updateDate;
 
     @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "member_seq")
+    @JoinColumn(name = "member_seq", insertable = false, updatable = false)
     private Member member;
+
+    @Column(name = "member_seq")
+    private Long memberSeq;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_seq")
@@ -64,17 +64,36 @@ public class Board {
     private Long likeCount;
 
 
+
+
     @Builder
     public Board(String title, String location, String img, String description,  Member member,@Nullable BoardCategory boardCategory, @Nullable Long readCount, @Nullable Long likeCount) {
         this.title = title;
         this.location = location;
         this.img = img;
         this.description = description;
-        this.reportingDate = LocalDate.now();
-        this.updateDate = LocalDate.now();
         this.member = member;
         this.boardCategory = boardCategory;
         this.readCount = readCount;
         this.likeCount = likeCount;
+    }
+
+
+    public void update(String title, String location, String img, String description, Member member ) {
+        this.title = title;
+        this.location = location;
+        this.img = img;
+        this.description = description;
+        this.memberSeq = member.getSeq();
+
+    }
+
+    public void create(String title, String location, String img, String description, Member member ) {
+        this.title = title;
+        this.location = location;
+        this.img = img;
+        this.description = description;
+        this.memberSeq = member.getSeq();
+
     }
 }

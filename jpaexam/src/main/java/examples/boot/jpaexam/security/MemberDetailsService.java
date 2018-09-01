@@ -28,20 +28,20 @@ public class MemberDetailsService implements UserDetailsService {
 
         //email에 해당하는 Member정보를 구한다.
         Member member = memberService.getMemberByEmail(email);
-        if (member == null) {
-            throw new UsernameNotFoundException(email + " not found! ");
+        if(member == null){
+            throw new UsernameNotFoundException(email + " not found!");
         }
 
         // UserDetails를 구현하고 있는 객체를 생성(email, password, 권한목록)
         /// 해당 객체를 리턴.
         List<GrantedAuthority> list = new ArrayList<>();
-        for(MemberRole memberRole : member.getMemberRoles()){
+        for(MemberRole memberRole :  member.getMemberRoles()){
             list.add(new SimpleGrantedAuthority(memberRole.getName()));
         }
         MemberLoginInfo userDetails =
-                new MemberLoginInfo(member.getEmail() , member.getPassword(), list);
+                new MemberLoginInfo(member.getEmail(), member.getPassword(), list);
         userDetails.setId(member.getId());
-        userDetails.setName((member.getName()));
+        userDetails.setName(member.getName());
 
         return userDetails;
     }
