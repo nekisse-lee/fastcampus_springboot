@@ -32,6 +32,8 @@ spring:
      request-context-attribute:
      suffix: .html
      spring.mustache.view-names:
+server:
+  port: 9090
 
 
 

@@ -2,8 +2,12 @@ package com.nekisse.myweb.controller;
 
 
 import com.nekisse.myweb.dto.MemberDto;
+import com.nekisse.myweb.security.MemberLoginInfo;
 import com.nekisse.myweb.service.MemberService;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +24,24 @@ public class HomeController {
     @GetMapping("/" )
     public String home(String name, Model model) {
         model.addAttribute("aaa", name);
+        model.addAttribute("isLogin", isAuthenticated());
         return "index";
+    }
+
+    private boolean isAuthenticated() {
+        SecurityContext context = SecurityContextHolder.getContext();
+        if(context == null) {
+            return false;
+        }
+        Authentication authentication = context.getAuthentication();
+        if(authentication == null) {
+            return false;
+        }
+        Object principal = authentication.getPrincipal();
+        if(principal == null) {
+            return false;
+        }
+        return principal instanceof MemberLoginInfo;
     }
 
     @GetMapping("/hotissue")

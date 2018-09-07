@@ -50,24 +50,17 @@
                 </thead>
 
                 <tbody>
-                <!--<tr th:each="board : ${boardList}">-->
                 {{#boardList}}
                 <tr>
-                    <!--<td th:text="${board.seq}"></td>-->
                     <td>{{seq}}</td>
-                    <!--<a href="#" th:href="@{/boardlist/readboard/{seq}(seq=${board.seq}}">-->
-                    <!--<td  th:text="${board.title}"></td>-->
-                    <td>{{title}}</td>
-                    <!--<td th:text="${board.location}"></td>-->
+                    <td>
+                        <a href="/board/{{seq}}">{{title}}</a>
+                    </td>
                     <td>{{location}}</td>
-                    <!--<td th:text="${board.img}">작성자입니다.</td>-->
                     <td> {{member.memberId}}</td>
-                    <!--<td th:text="${#temporals.format(board.reportingDate, 'yyyy-MM-dd')}"> board</td>-->
                     <td> {{createDate}}</td>
                     <td> {{readCount}}</td>
                     <td> {{likeCount}}</td>
-                    <!--<td th:text="${board.description}">2017.11.11</td>-->
-                    <!--<td th:text="${#board.format(board.regdate, 'yyyy-MM-dd HH:mm')}">1</td>-->
                 </tr>
                 {{/boardList}}
                 </tbody>

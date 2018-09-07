@@ -24,7 +24,12 @@
                     <a class="nav-link" href="/board">추천 게시판</a>
                 </li>
                 <li class="nav-item">
+                    {{^isLogin}}
                     <a class="nav-link" href="/login">Log-in</a>
+                    {{/isLogin}}
+                    {{#isLogin}}
+                    <a class="nav-link" href="/logout">Log-Out</a>
+                    {{/isLogin}}
                 </li>
             </ul>
         </div>
